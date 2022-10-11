@@ -1,0 +1,168 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UNTIRTA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+
+<body>
+    <!--bagian navbar-->
+    <nav class="navbar navbar-expand-lg" style="background-color:#52cd00;">
+      <div class="container-fluid">
+        <img src="{% static 'logo.png' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link {% if navbar == 'index' %} active {% endif %}" aria-current="page" href="{% url 'index' %}" style="color:	#FFFFFF">UNTIRTA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if navbar == 'home' %} active {% endif %}" href="{% url 'home' %}" style="color:	#FFFFFF">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:	#FFFFFF">
+                FAKULTAS
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="background-color:#99e765;">
+                <li><a class="dropdown-item {% if dropdown == 'faperta' %} active {% endif %}" href="{% url 'faperta' %}" style="color:	#000000">FAPERTA</a></li>
+
+                <li><a class="dropdown-item {% if dropdown == 'feb' %} active {% endif %}" href="{% url 'feb' %}" style="color:	#000000">FEB</a></li>
+
+                <li><a class="dropdown-item {% if dropdown == 'fh' %} active {% endif %}" href="{% url 'fh' %}" style="color:	#000000">FH</a></li>
+
+                <li><a class="dropdown-item {% if dropdown == 'fisip' %} active {% endif %}" href="{% url 'fisip' %}" style="color:	#000000">FISIP</a></li>
+
+                <li><a class="dropdown-item {% if dropdown == 'fk' %} active {% endif %}" href="{% url 'fk' %}" style="color:	#000000">FK</a></li>
+
+                <li><a class="dropdown-item {% if dropdown == 'fkip' %} active {% endif %}" href="{% url 'fkip' %}" style="color:	#000000">FKIP</a></li>
+
+                <li><a class="dropdown-item {% if dropdown == 'ft' %} active {% endif %}" href="{% url 'ft' %}" style="color:	#000000">FT</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item {% if dropdown == 'pascasarjana' %} active {% endif %}" href="{% url 'pascasarjana' %}" style="color:	#000000">PASCASARJANA</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if navbar == 'about' %} active {% endif %}" href="{% url 'about' %}" style="color:#FFFFFF"">About</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+            <button class="btn btn-outline-success" type="submit" style="color:#FFFFFF">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+      <!--penutup navbar-->
+
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+      <center><h2>FAKULTAS KEGURUAN DAN ILMU PENDIDIKAN</h2></center>
+      <h3>1. PENDIDIKAN NONFORMAL</h3>
+      <h3>2. PENDIDIKAN BAHASA INDONESIA</h3>
+      <h3>3. PENDIDIKAN BAHASA INGGRIS</h3>
+      <h3>4. PENDIDIKAN BIOLOGI</h3>
+      <h3>5. PENDIDIKAN MATEMATIKA</h3>
+      <h3>6. PENDIDIKAN GURU SEKOLAH DASAR</h3>
+      <h3>7. PENDIDIKAN GURU PAUD</h3>
+      <h3>8. BIMBINGAN DAN KONSELING</h3>
+      <h3>9. PENDIDIKAN FISIKA</h3>
+      <h3>10. PENDIDIKAN ILMU PENGETAHUAN ALAM</h3>
+      <h3>11. PENDIDIKAN KIMIA</h3>
+      <h3>12. PENDIDIKAN KHUSUS</h3>
+      <h3>13. PENDIDIKAN PANCASILA DAN KEWARGANEGARAAN</h3>
+      <h3>14. PENDIDIKAN SEJARAH</h3>
+      <h3>15. PENDIDIKAN SENI DAN PERTUNJUKAN</h3>
+      <h3>16. PENDIDIKAN SOSIOLOGI</h3>
+      <h3>17. PENDIDIKAN VOKASIONAL TEKNIK ELEKTRO</h3>
+      <h3>18. PENDIDIKAN VOKASIONAL TEKNIK MESIN</h3>
+
+      <h2>Data Dosen FKIP</h2>
+    <table class="table table-striped">
+      <tr>
+        <th>No</th>
+        <th>NIP</th>
+        <th>Nama</th>
+        <th>TTL</th>
+        <th>Email</th>
+        <th>Fakultas</th>
+        <th>Prodi</th>
+        <th>Alamat Rumah</th>
+        <th>Foto</th>
+      </tr>
+      {% for dosen in dataDosen %}
+      <tr>
+        <td>{{ dosen.nomor }}</td>
+        <td>{{ dosen.nip }}</td>
+        <td>{{ dosen.nama }}</td>
+        <td>{{ dosen.ttl }}</td>
+        <td>{{ dosen.email }}</td>
+        <td>{{ dosen.fakultas }}</td>
+        <td>{{ dosen.prodi }}</td>
+        <td>{{ dosen.alamatrumah }}</td>
+        <td><img src="{{ dosen.foto }}" alt="foto"></td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Data Staff FKIP</h2>
+    <table class="table table-striped">
+      <tr>
+        <th>No</th>
+        <th>NIP</th>
+        <th>Nama</th>
+        <th>TTL</th>
+        <th>Email</th>
+        <th>Unit</th>
+        <th>Alamat Rumah</th>
+        <th>Foto</th>
+      </tr>
+      {% for staff in dataStaff %}
+      <tr>
+        <td>{{ staff.nomor }}</td>
+        <td>{{ staff.nip }}</td>
+        <td>{{ staff.nama }}</td>
+        <td>{{ staff.ttl }}</td>
+        <td>{{ staff.email }}</td>
+        <td>{{ staff.unit }}</td>
+        <td>{{ staff.alamatrumah }}</td>
+        <td><img src="{{ staff.foto }}" alt="foto"></td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Data Mahasiswa FKIP</h2>
+    <table class="table table-striped">
+      <tr>
+        <th>No</th>
+        <th>NIM</th>
+        <th>Nama</th>
+        <th>TTL</th>
+        <th>Email</th>
+        <th>Fakultas</th>
+        <th>Prodi</th>
+        <th>Alamat</th>
+        <th>Foto</th>
+      </tr>
+      {% for mahasiswa in dataMahasiswa %}
+      <tr>
+        <td>{{ mahasiswa.nomor }}</td>
+        <td>{{ mahasiswa.nim }}</td>
+        <td>{{ mahasiswa.nama }}</td>
+        <td>{{ mahasiswa.ttl }}</td>
+        <td>{{ mahasiswa.email }}</td>
+        <td>{{ mahasiswa.fakultas }}</td>
+        <td>{{ mahasiswa.prodi }}</td>
+        <td>{{ mahasiswa.alamat}}</td>
+        <td><img src="{{ mahasiswa.foto }}" alt="foto" width="100px"></td>
+      </tr>
+      {% endfor %}
+    </table>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+      </body>
+    </html>
